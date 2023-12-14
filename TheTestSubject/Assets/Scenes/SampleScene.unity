@@ -673,7 +673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -91.50003, y: 199.99988}
+  m_AnchoredPosition: {x: -91.50003, y: 420.00943}
   m_SizeDelta: {x: 183, y: 1300}
   m_Pivot: {x: 0, y: 1}
 --- !u!4 &181121667 stripped
@@ -1126,8 +1126,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1997516088}
   m_HandleRect: {fileID: 1997516087}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.15384611
+  m_Value: 0.79999137
+  m_Size: 0.15384613
   m_NumberOfSteps: 11
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8867,17 +8867,17 @@ MonoBehaviour:
     to be bound by these Terms. If you do not agree to these Terms, please do not
     use our VR AI testing application.
 
-    
+
 
     1. Use of the VR AI Testing Application
 
-    
+
 
     1.1
     Eligibility: By using our VR AI testing application, you affirm that you are
     at least [age] years old or have obtained parental/guardian consent to use it.
 
-    
+
 
     1.2
     Testing Conduct: You agree to use the VR AI testing application solely for the
@@ -8885,99 +8885,97 @@ MonoBehaviour:
     Any unauthorized use or attempts to manipulate the application for purposes other
     than intended testing are strictly prohibited.
 
-    
 
-    1.3 Data and Privacy:
-    Our VR AI testing application may collect data related to user interactions and
-    testing results. By using the application, you consent to the collection and
-    processing of this data in accordance with our Privacy Policy.
 
-    
+    1.3 Data and Privacy: Our
+    VR AI testing application may collect data related to user interactions and testing
+    results. By using the application, you consent to the collection and processing
+    of this data in accordance with our Privacy Policy.
 
-    2.
-    Account and Access
 
-    
 
-    2.1 Account Creation: Creating an account may
-    be required to access specific features or to participate in AI testing scenarios.
-    You agree to provide accurate, complete, and updated information during the registration
-    process and to maintain the security of your account credentials.
+    2. Account and Access
 
-    
 
-    2.2
-    Access Limitations: We reserve the right to restrict or terminate access to certain
-    features or the entire VR AI testing application at our discretion, without prior
-    notice, if we suspect misuse, breach of terms, or for any other reason.
 
-    
+    2.1
+    Account Creation: Creating an account may be required to access specific features
+    or to participate in AI testing scenarios. You agree to provide accurate, complete,
+    and updated information during the registration process and to maintain the security
+    of your account credentials.
 
-    3.
-    Intellectual Property
 
-    
 
-    3.1 Ownership: All content, software, algorithms,
-    and related materials within the VR AI testing application are the property of
-    [Your Company Name] or its licensors.
+    2.2 Access Limitations: We reserve the right
+    to restrict or terminate access to certain features or the entire VR AI testing
+    application at our discretion, without prior notice, if we suspect misuse, breach
+    of terms, or for any other reason.
 
-    
 
-    3.2 License: We grant you
-    a limited, non-exclusive, non-transferable, revocable license to use the VR AI
-    testing application for the purpose of conducting AI testing and evaluations,
-    subject to these Terms.
 
-    
+    3. Intellectual Property
+
+
+
+    3.1
+    Ownership: All content, software, algorithms, and related materials within the
+    VR AI testing application are the property of [Your Company Name] or its licensors.
+
+
+
+    3.2
+    License: We grant you a limited, non-exclusive, non-transferable, revocable license
+    to use the VR AI testing application for the purpose of conducting AI testing
+    and evaluations, subject to these Terms.
+
+
 
     4. Limitation of Liability
 
-    
+
 
     4.1
     We make efforts to provide a reliable testing environment but do not guarantee
     that the VR AI testing application will be free of errors, defects, or interruptions.
 
-    
+
 
     4.2
     [Your Company Name] shall not be liable for any indirect, incidental, special,
     consequential, or punitive damages, or any loss of profits, data, or use, resulting
     from the use or inability to use the VR AI testing application.
 
-    
 
-    5.
-    Governing Law
 
-    
+    5. Governing
+    Law
 
-    These Terms shall be governed and construed in accordance
-    with the laws of [Your Country/State], without regard to its conflict of law
-    provisions.
 
-    
 
-    6. Changes to Terms
+    These Terms shall be governed and construed in accordance with the
+    laws of [Your Country/State], without regard to its conflict of law provisions.
 
-    
 
-    We reserve the right
-    to modify or replace these Terms at any time. We will notify users of any changes
-    by updating the Terms on our website or within the VR AI testing application.
-    Your continued use of the application after any changes constitute acceptance
-    of the updated Terms.
 
-    
+    6.
+    Changes to Terms
 
-    7. Contact Us
 
-    
 
-    If you have any
-    questions about these Terms or the VR AI testing application, please contact
-    us at [GTC.com].'
+    We reserve the right to modify or replace these Terms
+    at any time. We will notify users of any changes by updating the Terms on our
+    website or within the VR AI testing application. Your continued use of the application
+    after any changes constitute acceptance of the updated Terms.
+
+
+
+    7. Contact
+    Us
+
+
+
+    If you have any questions about these Terms or the VR AI testing application,
+    please contact us at [GTC.com].'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
