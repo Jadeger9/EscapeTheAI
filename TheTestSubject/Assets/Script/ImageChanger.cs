@@ -39,6 +39,7 @@ public class ImageChanger : MonoBehaviour
         {
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(false);
+            EventBus<WallCollapseEvent>.Publish(new WallCollapseEvent());
         }
     }
 

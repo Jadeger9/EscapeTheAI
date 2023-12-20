@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CollapsWall : MonoBehaviour
 {
     [SerializeField] private Rigidbody _wall; // Reference to the wall Rigidbody components
