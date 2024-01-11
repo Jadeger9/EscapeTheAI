@@ -11,6 +11,7 @@ public class ImageChanger : MonoBehaviour
     public Image image1; // Reference to the first UI Image component
     public Image image2; // Reference to the second UI Image component
 
+    private int[] _answerArray = new int[] { 0, 2, 2, 1 };
     private int totalChanges = 3; // Total number of changes allowed
     private int changeCount = 0; // Counter for the number of changes
     private List<Sprite> usedSprites = new List<Sprite>(); // List to track used sprites
@@ -24,11 +25,12 @@ public class ImageChanger : MonoBehaviour
             return;
         }
 
-        SetRandomImage();
+        SetRandomImage(0);
     }
 
-    public void SetRandomImage()
+    public void SetRandomImage(int chosenNumber)
     {
+        if (chosenNumber != 0 || totalChanges >= _answerArray.Length) CheckAnswer(chosenNumber);
         changeCount++;
 
         ChangeImageSprite(image1, list_1);
@@ -41,6 +43,13 @@ public class ImageChanger : MonoBehaviour
             image2.gameObject.SetActive(false);
             EventBus<WallCollapseEvent>.Publish(new WallCollapseEvent());
         }
+        AudioManager.Instance.PlaySound("Button");
+    }
+
+    private void CheckAnswer(int answer)
+    {
+        if (_answerArray[changeCount] == answer) AudioManager.Instance.PlaySound("GoodChoice");
+        else AudioManager.Instance.PlaySound("BadChoice");
     }
 
     private void ChangeImageSprite(Image img, List<Sprite> spriteList)
