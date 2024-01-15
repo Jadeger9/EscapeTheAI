@@ -43,7 +43,7 @@ public class SimonSaysBall : MonoBehaviour
     {
         if (_ballIndex == onBallColorChange.value && _myRenderer != null)
         {
-            _myRenderer.material.color = Color.green;
+            _myRenderer.material.color = Color.yellow;
             Invoke("LightOff", _lightDuration);
             AudioManager.Instance.PlaySound("Pling");
         }
