@@ -29,3 +29,21 @@ public class WallCollapseEvent : Event
     {
     }
 }
+
+public class OnBallClick : Event
+{
+    public readonly int value;
+    public OnBallClick(int newValue)
+    {
+        value = newValue;
+    }
+}
+
+public class OnBallColorChange : Event
+{
+    public readonly int value;
+    public OnBallColorChange(int newValue)
+    {
+        value = newValue;
+    }
+}
