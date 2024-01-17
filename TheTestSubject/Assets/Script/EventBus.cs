@@ -41,9 +41,11 @@ public class OnBallClick : Event
 
 public class OnBallColorChange : Event
 {
-    public readonly int value;
-    public OnBallColorChange(int newValue)
+    public readonly int ballNumber;
+    public readonly Color ballColor;
+    public OnBallColorChange(int newNumber, Color newcolor)
     {
-        value = newValue;
+        ballNumber = newNumber;
+        ballColor = newcolor;
     }
 }

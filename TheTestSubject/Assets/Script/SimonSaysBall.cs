@@ -41,9 +41,9 @@ public class SimonSaysBall : MonoBehaviour
 
     private void LightOn(OnBallColorChange onBallColorChange)
     {
-        if (_ballIndex == onBallColorChange.value && _myRenderer != null)
+        if (_ballIndex == onBallColorChange.ballNumber && _myRenderer != null)
         {
-            _myRenderer.material.color = Color.yellow;
+            _myRenderer.material.color = onBallColorChange.ballColor;
             Invoke("LightOff", _lightDuration);
             AudioManager.Instance.PlaySound("Pling");
         }

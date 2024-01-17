@@ -50,7 +50,8 @@ public class SimonSaysGameController : MonoBehaviour
         // Display each ball in the sequence with a cooldown between them
         foreach (int ballIndex in sequence)
         {
-            EventBus<OnBallColorChange>.Publish(new OnBallColorChange(ballIndex));
+            Color newColor = Color.yellow;
+            EventBus<OnBallColorChange>.Publish(new OnBallColorChange(ballIndex, newColor));
             yield return new WaitForSeconds(roundCooldown);
         }
 
@@ -70,6 +71,9 @@ public class SimonSaysGameController : MonoBehaviour
                 sequenceIndex++;
                 _correctAnswers++;
 
+                Color newColor = Color.green;
+                EventBus<OnBallColorChange>.Publish(new OnBallColorChange(onBallClick.value, newColor));
+
                 // Check if the player completed the entire sequence
                 if (sequenceIndex == currentRound)
                 {
@@ -80,6 +84,8 @@ public class SimonSaysGameController : MonoBehaviour
             else
             {
                 AudioManager.Instance.PlaySound("BadChoice");
+                Color newColor = Color.red;
+                EventBus<OnBallColorChange>.Publish(new OnBallColorChange(onBallClick.value, newColor));
 
                 // Wrong ball clicked, skip the rest of the current round and go to the next
                 Invoke("StartNextRound", roundCooldown);
