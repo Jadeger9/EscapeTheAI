@@ -2,9 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Events;
 
 public class ImageChanger : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Events to trigger when the event is completed")]
+    UnityEvent onComplete;
+
     public List<Sprite> list_1; // List of sprites for the first UI Image
     public List<Sprite> list_2; // List of sprites for the second UI Image
 
@@ -15,6 +20,9 @@ public class ImageChanger : MonoBehaviour
     private int totalChanges = 3; // Total number of changes allowed
     private int changeCount = 0; // Counter for the number of changes
     private List<Sprite> usedSprites = new List<Sprite>(); // List to track used sprites
+
+    public UnityEvent onPress => onComplete;
+
 
     void Start()
     {
@@ -30,20 +38,22 @@ public class ImageChanger : MonoBehaviour
 
     public void SetRandomImage(int chosenNumber)
     {
-        if (chosenNumber != 0 || totalChanges >= _answerArray.Length) CheckAnswer(chosenNumber);
-        changeCount++;
+        if (changeCount < totalChanges)
+        {
+            if (chosenNumber != 0 || totalChanges >= _answerArray.Length) CheckAnswer(chosenNumber);
+            changeCount++;
 
-        ChangeImageSprite(image1, list_1);
-        ChangeImageSprite(image2, list_2);
-
+            ChangeImageSprite(image1, list_1);
+            ChangeImageSprite(image2, list_2);
+        }
         // Deactivate Image components if the limit is reached
-        if (changeCount > totalChanges)
+        else
         {
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(false);
             AudioManager.Instance.PlaySound("TaskCompleted");
-        }
-        AudioManager.Instance.PlaySound("Button");
+            onComplete.Invoke();
+        }       
     }
 
     private void CheckAnswer(int answer)

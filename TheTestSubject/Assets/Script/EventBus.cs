@@ -49,3 +49,11 @@ public class OnBallColorChange : Event
         ballColor = newcolor;
     }
 }
+
+// Event indicating the start of a quest with a provided value
+public class OnMazeEnd : Event
+{
+    public OnMazeEnd()
+    {
+    }
+}

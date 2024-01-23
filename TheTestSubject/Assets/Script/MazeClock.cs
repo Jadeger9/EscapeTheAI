@@ -1,14 +1,27 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class MazeClock : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Events to trigger when the event is completed")]
+    UnityEvent onComplete;
+
     public float totalTime = 60.0f; // Total countdown time in seconds
     private float currentTime; // Current time left
 
     public TextMeshProUGUI timerText; // Reference to TextMeshPro Text
 
     private bool isTimerRunning = false; // Flag to track if the timer is running
+    private bool _hasEnded = false;
+
+    public UnityEvent onPress => onComplete;
+
+    private void OnEnable()
+    {
+        EventBus<OnMazeEnd>.Subscribe(EndTask);    
+    }
 
     private void Start()
     {
@@ -29,7 +42,7 @@ public class MazeClock : MonoBehaviour
             {
                 currentTime = 0;
                 isTimerRunning = false;
-                // Timer reached zero, perform any necessary actions
+                EndTask(new OnMazeEnd());
             }
         }
     }
@@ -62,6 +75,18 @@ public class MazeClock : MonoBehaviour
                 AudioManager.Instance.PlaySound(audioName);
                 break;
             }
+        }
+    }
+
+    private void EndTask(OnMazeEnd onMazeEnd)
+    {
+        if (_hasEnded == false)
+        {
+            if (isTimerRunning == true) AudioManager.Instance.PlaySound("TaskCompleted");
+            else AudioManager.Instance.PlaySound("TaskFailed");
+            isTimerRunning = false;
+            _hasEnded = true;
+            onComplete.Invoke();
         }
     }
 }
