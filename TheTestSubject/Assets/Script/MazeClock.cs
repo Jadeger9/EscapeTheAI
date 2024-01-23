@@ -1,6 +1,6 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class MazeClock : MonoBehaviour
 {
@@ -8,13 +8,12 @@ public class MazeClock : MonoBehaviour
     [Tooltip("Events to trigger when the event is completed")]
     UnityEvent onComplete;
 
-    public float totalTime = 60.0f; // Total countdown time in seconds
+    public float totalTime = 90.0f; // Total countdown time in seconds
     private float currentTime; // Current time left
-
-    public TextMeshProUGUI timerText; // Reference to TextMeshPro Text
 
     private bool isTimerRunning = false; // Flag to track if the timer is running
     private bool _hasEnded = false;
+    HashSet<int> playedTimes = new HashSet<int>();
 
     public UnityEvent onPress => onComplete;
 
@@ -35,8 +34,7 @@ public class MazeClock : MonoBehaviour
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
-                CheckAndPlayAudio(); // Call the new function to check and play audio
-                UpdateTimerDisplay();
+                CheckAndPlayAudio(); // Call the function to check and play audio
             }
             else
             {
@@ -47,32 +45,29 @@ public class MazeClock : MonoBehaviour
         }
     }
 
-    void UpdateTimerDisplay()
-    {
-        int minutes = Mathf.FloorToInt(currentTime / 60);
-        int seconds = Mathf.FloorToInt(currentTime % 60);
-
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
     // Public method to start the timer
-    public void StartTimer()
+    public void OnTriggerEnter()
     {
-        isTimerRunning = true;
+        if (isTimerRunning == false) isTimerRunning = true;
     }
 
     // New function to check and play audio at specific times
     void CheckAndPlayAudio()
     {
-        int[] audioTimes = { 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+        int[] audioTimes = { 60, 30, 15, 13, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
         foreach (int time in audioTimes)
         {
-            if (Mathf.FloorToInt(currentTime) == time)
+            // Check if the time has already been played
+            if (!playedTimes.Contains(time) && Mathf.FloorToInt(currentTime) == time)
             {
                 string audioName = "Countdown_" + time;
                 // Play audio at the specified time
                 AudioManager.Instance.PlaySound(audioName);
+
+                // Mark the time as played
+                playedTimes.Add(time);
+
                 break;
             }
         }

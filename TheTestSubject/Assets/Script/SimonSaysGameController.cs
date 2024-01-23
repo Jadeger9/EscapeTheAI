@@ -5,6 +5,10 @@ public class SimonSaysGameController : MonoBehaviour
     [SerializeField] private int _ballAmount = 9;
     [SerializeField] private int _totalRounds = 5;
 
+    [SerializeField] private Material _yellowColor;
+    [SerializeField] private Material _greenColor;
+    [SerializeField] private Material _redColor;
+
     public float roundCooldown = 1f; // Cooldown between rounds
     private int currentRound = 1; // Current round
     private int[] sequence; // Array to store the sequence of lit balls
@@ -50,8 +54,7 @@ public class SimonSaysGameController : MonoBehaviour
         // Display each ball in the sequence with a cooldown between them
         foreach (int ballIndex in sequence)
         {
-            Color newColor = Color.yellow;
-            EventBus<OnBallColorChange>.Publish(new OnBallColorChange(ballIndex, newColor));
+            EventBus<OnBallColorChange>.Publish(new OnBallColorChange(ballIndex, _yellowColor));
             yield return new WaitForSeconds(roundCooldown);
         }
 
@@ -71,8 +74,7 @@ public class SimonSaysGameController : MonoBehaviour
                 sequenceIndex++;
                 _correctAnswers++;
 
-                Color newColor = Color.green;
-                EventBus<OnBallColorChange>.Publish(new OnBallColorChange(onBallClick.value, newColor));
+                EventBus<OnBallColorChange>.Publish(new OnBallColorChange(onBallClick.value, _greenColor));
 
                 // Check if the player completed the entire sequence
                 if (sequenceIndex == currentRound)
@@ -84,8 +86,7 @@ public class SimonSaysGameController : MonoBehaviour
             else
             {
                 AudioManager.Instance.PlaySound("BadChoice");
-                Color newColor = Color.red;
-                EventBus<OnBallColorChange>.Publish(new OnBallColorChange(onBallClick.value, newColor));
+                EventBus<OnBallColorChange>.Publish(new OnBallColorChange(onBallClick.value, _redColor));
 
                 // Wrong ball clicked, skip the rest of the current round and go to the next
                 Invoke("StartNextRound", roundCooldown);
