@@ -9,10 +9,13 @@ public class PlaySoundOnTrigger : MonoBehaviour
     [SerializeField] private string _soundName;
     private void OnTriggerEnter(Collider other)
     {
-        if (_hasTriggered == false)
+        if (other.CompareTag("Player"))
         {
-            AudioManager.Instance.PlaySound(_soundName);
-            _hasTriggered = true;
-        }
+            if (_hasTriggered == false)
+            {
+                AudioManager.Instance.PlaySound(_soundName);
+                _hasTriggered = true;
+            }
+        }        
     }
 }

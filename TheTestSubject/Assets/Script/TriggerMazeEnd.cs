@@ -8,10 +8,13 @@ public class TriggerMazeEnd : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_hasTriggered == false)
+        if (other.CompareTag("Player"))
         {
-            EventBus<OnMazeEnd>.Publish(new OnMazeEnd());
-            _hasTriggered = true;
-        }
+            if (_hasTriggered == false)
+            {
+                EventBus<OnMazeEnd>.Publish(new OnMazeEnd());
+                _hasTriggered = true;
+            }
+        }            
     }
 }
