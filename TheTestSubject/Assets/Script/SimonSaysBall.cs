@@ -9,7 +9,7 @@ public class SimonSaysBall : MonoBehaviour
     [SerializeField] private float _clickCooldown = 0.5f; // Cooldown for clicking the ball
 
     private Renderer _myRenderer;
-    private Color _originalColor;
+    private Material _originalMaterial;
     private bool _isOnCooldown = false;
 
     private void OnEnable()
@@ -20,7 +20,7 @@ public class SimonSaysBall : MonoBehaviour
     private void Start()
     {
         TryGetComponent(out _myRenderer);
-        if (_myRenderer != null) _originalColor = _myRenderer.material.color;
+        if (_myRenderer != null) _originalMaterial = _myRenderer.material;
     }
 
     public void ClickBall()
@@ -43,7 +43,7 @@ public class SimonSaysBall : MonoBehaviour
     {
         if (_ballIndex == onBallColorChange.ballNumber && _myRenderer != null)
         {
-            _myRenderer.material.color = onBallColorChange.ballColor;
+            _myRenderer.material = onBallColorChange.ballColor;
             Invoke("LightOff", _lightDuration);
             AudioManager.Instance.PlaySound("Pling");
         }
@@ -51,6 +51,6 @@ public class SimonSaysBall : MonoBehaviour
 
     private void LightOff()
     {
-        if (_myRenderer != null) _myRenderer.material.color = _originalColor;
+        if (_myRenderer != null) _myRenderer.material = _originalMaterial;
     }
 }

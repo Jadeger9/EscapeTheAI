@@ -42,10 +42,18 @@ public class OnBallClick : Event
 public class OnBallColorChange : Event
 {
     public readonly int ballNumber;
-    public readonly Color ballColor;
-    public OnBallColorChange(int newNumber, Color newcolor)
+    public readonly Material ballColor;
+    public OnBallColorChange(int newNumber, Material newcolor)
     {
         ballNumber = newNumber;
         ballColor = newcolor;
+    }
+}
+
+// Event indicating the start of a quest with a provided value
+public class OnMazeEnd : Event
+{
+    public OnMazeEnd()
+    {
     }
 }
