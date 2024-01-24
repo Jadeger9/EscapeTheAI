@@ -91,4 +91,9 @@ public class MazeClock : MonoBehaviour
             onComplete.Invoke();
         }
     }
+
+    private void DestroyMaze()
+    {
+
+    }
 }
