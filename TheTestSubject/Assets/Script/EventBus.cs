@@ -22,7 +22,34 @@ public class EventBus<T> where T : Event
     }
 }
 
-// Event indicating the start of a quest with a provided value
+public class OnPlottwistStart : Event
+{
+    public OnPlottwistStart()
+    {
+    }
+}
+
+public class OnPlottwistEnd : Event
+{
+    public OnPlottwistEnd()
+    {
+    }
+}
+
+public class OnFlickerStart : Event
+{
+    public OnFlickerStart()
+    {
+    }
+}
+
+public class OnFlickerEnd : Event
+{
+    public OnFlickerEnd()
+    {
+    }
+}
+
 public class WallCollapseEvent : Event
 {
     public WallCollapseEvent()

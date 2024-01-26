@@ -117,6 +117,6 @@ public class SimonSaysGameController : MonoBehaviour
 
     private void StartEnding()
     {
-        EventBus<WallCollapseEvent>.Publish(new WallCollapseEvent());
+        EventBus<OnPlottwistStart>.Publish(new OnPlottwistStart());
     }
 }
