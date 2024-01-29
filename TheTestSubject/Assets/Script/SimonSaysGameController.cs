@@ -118,5 +118,11 @@ public class SimonSaysGameController : MonoBehaviour
     private void StartEnding()
     {
         EventBus<OnPlottwistStart>.Publish(new OnPlottwistStart());
+        Invoke("PlottwistSubtitles", 7);
+    }
+
+    private void PlottwistSubtitles()
+    {
+        EventBus<OnSubtitleChange>.Publish(new OnSubtitleChange("Go back to the main Entrance"));
     }
 }

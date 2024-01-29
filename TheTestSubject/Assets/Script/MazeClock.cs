@@ -14,6 +14,7 @@ public class MazeClock : MonoBehaviour
     private bool isTimerRunning = false; // Flag to track if the timer is running
     private bool _hasEnded = false;
     HashSet<int> playedTimes = new HashSet<int>();
+    private bool _hasTriggered = false;
 
     public UnityEvent onPress => onComplete;
 
@@ -53,7 +54,11 @@ public class MazeClock : MonoBehaviour
     // Public method to start the timer
     public void OnTriggerEnter()
     {
-        if (isTimerRunning == false) isTimerRunning = true;
+        if (isTimerRunning == false && _hasTriggered == false)
+        {
+            isTimerRunning = true;
+            _hasTriggered = true;
+        }        
     }
 
     // New function to check and play audio at specific times

@@ -29,6 +29,7 @@ public class StopPlottwistTrigger : MonoBehaviour
             if (_hasTriggered == false && _active == true)
             {
                 EventBus<OnPlottwistEnd>.Publish(new OnPlottwistEnd());
+                EventBus<OnSubtitleChange>.Publish(new OnSubtitleChange("Go to the big screen."));
                 _hasTriggered = true;
             }
         }

@@ -22,6 +22,15 @@ public class EventBus<T> where T : Event
     }
 }
 
+public class OnSubtitleChange : Event
+{
+    public readonly string value;
+    public OnSubtitleChange(string newValue)
+    {
+        value = newValue;
+    }
+}
+
 public class OnPlottwistStart : Event
 {
     public OnPlottwistStart()
