@@ -15,6 +15,8 @@ public class Disclaimer : MonoBehaviour
 
     private void RestartGame()
     {
+        AudioManager.Instance.PlayLongSound("Loading");
+        AudioManager.Instance.ChangeBackgrondMusic("BackgroundMusic");
         SceneManager.LoadScene("MainMenu");
     }
 }

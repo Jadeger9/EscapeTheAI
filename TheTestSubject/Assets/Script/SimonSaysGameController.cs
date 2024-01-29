@@ -109,16 +109,14 @@ public class SimonSaysGameController : MonoBehaviour
         else
         {
             _gameOver = true;
-            Invoke("StartEnding", 5);
-            if (_correctAnswers > (_totalRounds / 2)) AudioManager.Instance.PlaySound("TaskCompleted");
-            else AudioManager.Instance.PlaySound("TaskFailed");
+            Invoke("StartEnding", 3);
         }
     }
 
     private void StartEnding()
     {
         EventBus<OnPlottwistStart>.Publish(new OnPlottwistStart());
-        Invoke("PlottwistSubtitles", 7);
+        Invoke("PlottwistSubtitles", 5);
     }
 
     private void PlottwistSubtitles()

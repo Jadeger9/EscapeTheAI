@@ -31,7 +31,7 @@ public class StopPlottwistTrigger : MonoBehaviour
             {
                 EventBus<OnPlottwistEnd>.Publish(new OnPlottwistEnd());
                 EventBus<OnSubtitleChange>.Publish(new OnSubtitleChange("Go to the big screen."));
-                Invoke("GoToDisclaimer", 65);
+                Invoke("GoToDisclaimer", 75);
                 _hasTriggered = true;
             }
         }
@@ -39,6 +39,7 @@ public class StopPlottwistTrigger : MonoBehaviour
 
     private void GoToDisclaimer()
     {
+        AudioManager.Instance.ChangeBackgrondMusic("DisclaimerMusic");
         SceneManager.LoadScene("Disclaimer");
     }
 }

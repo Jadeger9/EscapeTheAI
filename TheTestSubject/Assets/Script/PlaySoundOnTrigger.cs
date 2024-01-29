@@ -36,6 +36,6 @@ public class PlaySoundOnTrigger : MonoBehaviour
 
     public void NextAssignmentSubtitle()
     {
-        EventBus<OnSubtitleChange>.Publish(new OnSubtitleChange("Go the the next assignment."));
+        EventBus<OnSubtitleChange>.Publish(new OnSubtitleChange("Continue to the next assignment."));
     }
 }
