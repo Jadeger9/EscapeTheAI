@@ -34,7 +34,7 @@ public class PlottwistSounds : MonoBehaviour
     {
         AudioManager.Instance.ChangeBackgrondMusic("BackgroundMusic");
         EventBus<OnFlickerEnd>.Publish(new OnFlickerEnd());
-        Invoke("OnRevealSound", 0.5f);
+        Invoke("OnRevealSound", 0.1f);
         Invoke("StartStatSequence", 5);
     }
 
