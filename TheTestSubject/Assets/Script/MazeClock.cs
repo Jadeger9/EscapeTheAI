@@ -80,10 +80,8 @@ public class MazeClock : MonoBehaviour
 
     private void EndTask(OnMazeEnd onMazeEnd)
     {
-        Debug.Log("Ended");
         if (_hasEnded == false)
         {
-            Debug.Log("proper Ended" + isTimerRunning);
             if (isTimerRunning == true) AudioManager.Instance.PlaySound("TaskCompleted");
             else AudioManager.Instance.PlaySound("TaskFailed");
             isTimerRunning = false;
