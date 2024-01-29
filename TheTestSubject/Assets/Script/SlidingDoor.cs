@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SlidingDoor : MonoBehaviour
 {
-    private AudioSource _myAudioSource;
     public float maxSlideDistance = 5f; // Set the maximum slide distance in the Inspector
     public Vector3 slideDirection = Vector3.right; // Set the slide direction in the Inspector
 
@@ -16,18 +15,13 @@ public class SlidingDoor : MonoBehaviour
     {
         initialPosition = transform.position;
         targetPosition = initialPosition;
-        TryGetComponent<AudioSource>(out _myAudioSource);
     }
 
     public void ToggleDoor()
     {
         isOpen = !isOpen;
-        if (isOpen)
-            targetPosition = CalculateTargetPosition(maxSlideDistance);
-        else
-            targetPosition = initialPosition;
-
-        if (_myAudioSource != null) _myAudioSource.Play();
+        if (isOpen) targetPosition = CalculateTargetPosition(maxSlideDistance);
+        AudioManager.Instance.PlayShortSound("Slidingdoor");
     }
 
     private Vector3 CalculateTargetPosition(float distance)

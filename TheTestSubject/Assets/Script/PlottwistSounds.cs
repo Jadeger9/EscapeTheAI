@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class PlottwistSounds : MonoBehaviour
 {
-
-    private void Start()
-    {
-        EventBus<OnPlottwistStart>.Publish(new OnPlottwistStart());
-    }
-
     private void OnEnable()
     {
         EventBus<OnPlottwistStart>.Subscribe(PlottwistStart);
